@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Wavey\Sweetalert\Sweetalert;
 
 class UserController extends Controller
 {
@@ -28,7 +29,7 @@ class UserController extends Controller
             'matric'=> $validatedData['matric'],
             'password' => $validatedData['password'],
         ]);
-        toast('Account Created, Please Proceed to Login', 'info');
+        Sweetalert::success('Account Created, Please Proceed to Login', 'Success');
         return redirect('/login');
     }
 

@@ -22,9 +22,9 @@
   placeholder="Item Found">
   <input type="text" name="tags" id="tags" class="cus-input"
   placeholder="Tags">
-  <input type="text" name="email" id="email" class="cus-input"
+  <input type="text" name="description" id="description" class="cus-input"
   placeholder="Further Description/Story">
-  <input name="found" type="number" value="1">
+  <input hidden name="found" type="number" value="1">
 <button class="rounded-xl bg-[#F58D25] w-full py-4 px-3 mt-5">Create</button>
 </form>
 

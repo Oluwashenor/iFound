@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Item;
 use Illuminate\Http\Request;
+use Wavey\Sweetalert\Sweetalert;
 
 class ItemController extends Controller
 {
@@ -22,19 +23,19 @@ class ItemController extends Controller
     {
         $validatedData = $request->validate([
             'name' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string', 'max:255'],
             'tags' => ['required', 'string', 'max:255'],
             'date_found'=> ['required'],
             'found' => ['required', 'string', 'max:255']
         ]);
-        // print_r($validatedData);
-        // return;
         $user = Item::create([
             'name' => $validatedData['name'],
             'tags' => $validatedData['tags'],
             'found' => $validatedData['found'],
+            'description' => $validatedData['description'],
             'date_found' => $validatedData['date_found'],
         ]);
-        toast('Post Created Successfully', 'success');
+        Sweetalert::success('Creation Successful', 'Success');
         return redirect("/");
     }
 
