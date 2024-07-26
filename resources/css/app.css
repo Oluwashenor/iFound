@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    font-family: 'Satoshi', sans-serif;
+}
+
+.cus-input{
+    @apply w-full px-3 py-4 mt-5 border-2 rounded-xl placeholder:text-gray-600;
+}
