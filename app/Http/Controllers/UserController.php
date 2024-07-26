@@ -4,14 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
     public function register(Request $request)
     {
-        $role = 'student';
         $validatedData = $request->validate([
             'name' => ['required', 'string', 'max:255'],
+            'matric' => ['required', 'string', 'max:15', 'min:9'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -21,22 +22,12 @@ class UserController extends Controller
             toast('E-Mail already exist', 'info');
             return redirect('/register');
         }
-        $emails_for_admins = array("adeshiname@gmail.com");
-        if (in_array($validatedData['email'], $emails_for_admins)) {
-            $role = 'admin';
-        }
         $user = User::create([
             'name' => $validatedData['name'],
             'email' => $validatedData['email'],
+            'matric'=> $validatedData['matric'],
             'password' => $validatedData['password'],
-            'role' => $role,
-            'token' => '',
         ]);
-        if ($user->role == 'student') {
-            Student::create([
-                'user_id' => $user->id
-            ]);
-        }
         toast('Account Created, Please Proceed to Login', 'info');
         return redirect('/login');
     }
@@ -44,11 +35,11 @@ class UserController extends Controller
     public function  login(Request $request)
     {
         $validatedData = $request->validate([
-            'email' => ['required', 'email'],
+            'matric' => ['required'],
             'password' => ['required'],
         ]);
 
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->only('matric', 'password');
         if (auth()->attempt($credentials)) {
             return redirect('/');
         }

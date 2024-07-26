@@ -16,8 +16,9 @@
 <p class="text-center">Please lets have your details</p>
 <input type="text" name="name" id="name" class="cus-input" placeholder="Full Name">
 <input type="text" name="email" id="email" class="cus-input" placeholder="badbish@gmail.com">
-<input type="text" name="password" id="password" class="cus-input" placeholder="*************">
-<input type="text" name="password_confirmation" id="re_password" class="cus-input" placeholder="*************">
+<input type="text" name="matric" id="matric" class="cus-input" placeholder="Matric Number">
+<input type="text" name="password" id="password" class="cus-input" placeholder="***********">
+<input type="text" name="password_confirmation" id="re_password" class="cus-input" placeholder="**********">
 <button class="rounded-xl bg-[#F58D25] w-full py-4 px-3 mt-5">Sign Up</button>
 
 
