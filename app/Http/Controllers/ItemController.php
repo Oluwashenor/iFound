@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Item;
 use Illuminate\Http\Request;
 use Wavey\Sweetalert\Sweetalert;
+use Auth;
 
 class ItemController extends Controller
 {
@@ -14,6 +15,17 @@ class ItemController extends Controller
     public function index()
     {
         //
+    }
+
+    public function dashboard(){
+        $foundItems = Item::where('found', 1)->get();
+        return View('welcome', compact('foundItems'));
+    }
+
+    public function contactfinder($id){
+    
+        $item = Item::find($id);
+        return View('contactfinder', compact('item'));
     }
 
     /**
@@ -34,6 +46,7 @@ class ItemController extends Controller
             'found' => $validatedData['found'],
             'description' => $validatedData['description'],
             'date_found' => $validatedData['date_found'],
+            'user_id'=> Auth::user()->id
         ]);
         Sweetalert::success('Creation Successful', 'Success');
         return redirect("/");

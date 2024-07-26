@@ -25,7 +25,7 @@
   <input type="text" name="description" id="description" class="cus-input"
   placeholder="Further Description/Story">
   <input hidden name="found" type="number" value="1">
-<button class="rounded-xl bg-[#F58D25] w-full py-4 px-3 mt-5">Create</button>
+<button class="rounded-xl bg-[#F58D25] text-white w-full py-4 px-3 mt-5">Create</button>
 </form>
 
 </div> 

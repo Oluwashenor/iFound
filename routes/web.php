@@ -2,12 +2,10 @@
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\MessageController;
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('/new', function () {
     return view('new');
@@ -27,10 +25,16 @@ Route::get('/report', function () {
     return view('report');
 });
 
+Route::post('/sendMessage',[MessageController::class, 'create'])->middleware('auth');
+
+
+Route::get('/', [ItemController::class, 'dashboard'])->middleware('auth');
+Route::get('/contactfinder/{id}', [ItemController::class, 'contactfinder'])->middleware('auth');
+
 
 Route::get('/login', function () {
     return view('auth.login');
-});
+})->name('login');
 
 Route::post('/loginAction', [UserController::class, 'login']);
 

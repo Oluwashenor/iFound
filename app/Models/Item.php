@@ -12,7 +12,15 @@ class Item extends Model
         'description',
         'tags',
         'date_found',
-        'found'
+        'found',
+        'closed',
+        'user_id'
     ];
     use HasFactory;
+
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

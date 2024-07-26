@@ -17,7 +17,7 @@
         placeholder="EU204202-000">
     <input type="text" name="password" id="password" class="cus-input"
         placeholder="*************">
-    <button class="rounded-xl bg-[#F58D25] w-full py-4 px-3 mt-5">Login</button>
+    <button class="rounded-xl bg-[#F58D25] w-full py-4 px-3 mt-5 text-white">Login</button>
     </form>
 
     <div class="mt-20">

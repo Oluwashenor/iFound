@@ -19,7 +19,7 @@
 <input type="text" name="matric" id="matric" class="cus-input" placeholder="Matric Number">
 <input type="text" name="password" id="password" class="cus-input" placeholder="***********">
 <input type="text" name="password_confirmation" id="re_password" class="cus-input" placeholder="**********">
-<button class="rounded-xl bg-[#F58D25] w-full py-4 px-3 mt-5">Sign Up</button>
+<button class="rounded-xl bg-[#F58D25] w-full text-white py-4 px-3 mt-5">Sign Up</button>
 
 
 <div class="mt-20">
