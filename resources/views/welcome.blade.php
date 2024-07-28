@@ -32,15 +32,20 @@
     <div class="absolute ml-[10%] px-4 flex flex-col mt-10 w-[1000px] h-[300px] rounded-2xl">
     <div class="grid grid-cols-3 gap-8">
     @foreach ($foundItems as $item)
+    <?php
+     $imageurl = "storage/uploads/BU13Sj3BEdZSWSxTuKo9L875Mfk3iCxsWvHjF70P.png";
+    ?>
     <a href="/contactfinder/{{$item->id}}">
-    <div class="flex flex-col items-center">
+    <div class="flex flex-col items-center mt-6">
         <div>
-            <img src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+            {{-- <img src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt=""> --}}
+        <img width="256px" height="256px" src={{asset($imageurl)}} alt="upload image">
+        {{-- <img src="{{ asset($imageurl) }}" alt="Uploaded Image" /> --}}
         </div>
-        <div class="flex flex-col">
+        {{-- <div class="flex flex-col">
             <span class="italic">{{$item->user->name}} <span class="bold"> Found </span> </span>
             <span>{{$item->name}} on {{$item->created_at}}</span>
-        </div>
+        </div> --}}
     </div>
     </a>
     @endforeach

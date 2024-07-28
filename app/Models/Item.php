@@ -14,7 +14,8 @@ class Item extends Model
         'date_found',
         'found',
         'closed',
-        'user_id'
+        'user_id',
+        'image'
     ];
     use HasFactory;
 

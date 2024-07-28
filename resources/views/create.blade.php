@@ -5,7 +5,7 @@
 <div class="absolute ml-[30%] top-24 p-4 flex flex-col mt-10 w-[400px] h-[300px] justify-center rounded-2xl">
 
        
-<form method="POST" action="/createFoundAction">
+<form method="POST" action="/createFoundAction" enctype="multipart/form-data">
   @foreach ($errors->all() as $error)
   <div class="relative px-4 py-3 text-red-700 bg-red-100 border border-red-400 rounded" role="alert">
       <strong class="font-bold text-red-700">Error!</strong>

@@ -16,9 +16,6 @@ class MessageController extends Controller
      */
     public function index()
     {
-        // $yesterday = Carbon::yesterday();
-        // return $yesterday->diffForHumans();
-
         $messages = Message::with('sender')->where('receiver_id', Auth::user()->id)->get();
         return View('inbox',compact('messages'));
     }

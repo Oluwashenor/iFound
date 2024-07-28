@@ -6,6 +6,7 @@ use App\Models\Item;
 use Illuminate\Http\Request;
 use Wavey\Sweetalert\Sweetalert;
 use Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ItemController extends Controller
 {
@@ -19,6 +20,8 @@ class ItemController extends Controller
 
     public function dashboard(){
         $foundItems = Item::where('found', 1)->get();
+        $filename = "/storage/uploads/uploads/Qd8h1SE9WQ2tmWrp51CP7J3iaUoj37NRCsWM6tlZ.jpg";
+        // return Storage::url("uploads/{$filename}");
         return View('welcome', compact('foundItems'));
     }
 
@@ -38,15 +41,19 @@ class ItemController extends Controller
             'description' => ['required', 'string', 'max:255'],
             'tags' => ['required', 'string', 'max:255'],
             'date_found'=> ['required'],
-            'found' => ['required', 'string', 'max:255']
+            'found' => ['required', 'string', 'max:255'],
+            'file' => 'required|mimes:jpg,png|max:2048'
         ]);
-        $user = Item::create([
+        $file = $request->file('file');
+        $path = $file->store('uploads', 'public');
+        $item = Item::create([
             'name' => $validatedData['name'],
             'tags' => $validatedData['tags'],
             'found' => $validatedData['found'],
             'description' => $validatedData['description'],
             'date_found' => $validatedData['date_found'],
-            'user_id'=> Auth::user()->id
+            'user_id'=> Auth::user()->id,
+            'image'=> $path
         ]);
         Sweetalert::success('Creation Successful', 'Success');
         return redirect("/");
