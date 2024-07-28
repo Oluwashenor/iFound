@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
 @section('content')
-@if($foundItems->count() > 0){
-<div class="absolute ml-[10%] px-4 flex flex-col mt-10 w-[1000px] h-[300px] rounded-2xl">
+@if($foundItems->count() > 0)
+{{-- <div class="absolute ml-[10%] px-4 flex flex-col mt-10 w-[1000px] h-[300px] rounded-2xl">
 
     <span class="my-2">Found Items</span>
     @foreach ($foundItems as $item)
@@ -27,8 +27,27 @@
     </div></a>
     @endforeach
 
-</div>
-}
+</div> --}}
+
+    <div class="absolute ml-[10%] px-4 flex flex-col mt-10 w-[1000px] h-[300px] rounded-2xl">
+    <div class="grid grid-cols-3 gap-8">
+    @foreach ($foundItems as $item)
+    <a href="/contactfinder/{{$item->id}}">
+    <div class="flex flex-col items-center">
+        <div>
+            <img src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+        </div>
+        <div class="flex flex-col">
+            <span class="italic">{{$item->user->name}} <span class="bold"> Found </span> </span>
+            <span>{{$item->name}} on {{$item->created_at}}</span>
+        </div>
+    </div>
+    </a>
+    @endforeach
+    </div>
+  </div>
+
+
 @else
 <div class="absolute flex justify-center"><span >There are currently no items for claiming</span></div>
 

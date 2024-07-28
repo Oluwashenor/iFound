@@ -14,6 +14,7 @@ class UserController extends Controller
         $validatedData = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'matric' => ['required', 'string', 'max:15', 'min:9'],
+            'phone' => ['required', 'string', 'max:15', 'min:10'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -27,6 +28,7 @@ class UserController extends Controller
             'name' => $validatedData['name'],
             'email' => $validatedData['email'],
             'matric'=> $validatedData['matric'],
+            'phone'=> $validatedData['phone'],
             'password' => $validatedData['password'],
         ]);
         Sweetalert::success('Account Created, Please Proceed to Login', 'Success');

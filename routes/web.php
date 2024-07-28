@@ -26,6 +26,7 @@ Route::get('/report', function () {
 });
 
 Route::post('/sendMessage',[MessageController::class, 'create'])->middleware('auth');
+Route::get('/inbox',[MessageController::class, 'index'])->middleware('auth');
 
 
 Route::get('/', [ItemController::class, 'dashboard'])->middleware('auth');

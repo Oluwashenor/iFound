@@ -15,7 +15,7 @@
           </div>
     </div></a>
     
-    <a href="/report">
+    <a href="/">
         <div class="flex my-4">
             <div class="text-2xl grow h-14">
                 Lost an Item

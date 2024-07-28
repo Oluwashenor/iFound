@@ -13,9 +13,13 @@
   </div>
   @endforeach
   {{csrf_field()}}
-<p class="mb-5 text-center">Enter your details so you could be contacted by the finder</p>
-  <input type="text" name="description" id="description" class="cus-input"
-  placeholder="Further Description/Story">
+<p class="mb-5 text-center">Enter your details so you could be contacted by the finder also include your contact details</p>
+<input type="text" name="email" id="email" class="cus-input"
+  placeholder="{{Auth::user()->email}}" disabled> 
+  <input type="text" name="phone" id="phone" class="cus-input"
+  placeholder="{{Auth::user()->phone}}" disabled> 
+<input type="text" name="message" id="message" class="cus-input"
+  placeholder="Please drop your message to the finder">
   <input hidden name="item_id" type="number" value="{{$item->id}}">
 <button class="rounded-xl bg-[#F58D25] text-white w-full py-4 px-3 mt-5">Send Message</button>
 </form>

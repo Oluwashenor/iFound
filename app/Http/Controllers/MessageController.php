@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Message;
+use App\Models\Item;
 use Illuminate\Http\Request;
 use Wavey\Sweetalert\Sweetalert;
 use Auth;
+use Illuminate\Support\Carbon;
 
 class MessageController extends Controller
 {
@@ -14,7 +16,11 @@ class MessageController extends Controller
      */
     public function index()
     {
-        //
+        // $yesterday = Carbon::yesterday();
+        // return $yesterday->diffForHumans();
+
+        $messages = Message::with('sender')->where('receiver_id', Auth::user()->id)->get();
+        return View('inbox',compact('messages'));
     }
 
     /**
@@ -23,18 +29,20 @@ class MessageController extends Controller
     public function create(Request $request)
     {
         $validatedData = $request->validate([
-            'description' => ['required', 'string', 'max:255'],
+            'message' => ['required', 'string', 'max:255'],
             'item_id'=> ['required']
         ]);
-        $alreadyMessage = Message::where('item_id',$validatedData['item_id'])->where('user_id', Auth::user()->id)->first();
-        if($alreadyMessage != null)
-        Sweetalert::info('Your message has been sent previously', 'Already Messaged');
-        return redirect("/");
+        $item = Item::find($validatedData['item_id']);
+        $alreadyMessage = Message::where('item_id',$validatedData['item_id'])->where('sender_id', Auth::user()->id)->where('receiver_id',  $item->user_id)->first();
+        if($alreadyMessage != null){
+            Sweetalert::info('Your message has been sent previously', 'Already Messaged');
+            return redirect("/");
+        }
         $message = Message::create([
-            'description' => $validatedData['description'],
+            'message' => $validatedData['message'],
             'item_id'=> $validatedData['item_id'],
-            'user_id'=> Auth::user()->id,
-            
+            'sender_id'=> Auth::user()->id,
+            'receiver_id'=> $item->user_id,
         ]);
         Sweetalert::success('Your message has been sent successfully', 'Success');
         return redirect("/");
