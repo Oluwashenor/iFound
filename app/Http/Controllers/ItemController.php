@@ -31,9 +31,6 @@ class ItemController extends Controller
         return View('contactfinder', compact('item'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create(Request $request)
     {
         $validatedData = $request->validate([
@@ -45,7 +42,10 @@ class ItemController extends Controller
             'file' => 'required|mimes:jpg,png|max:2048'
         ]);
         $file = $request->file('file');
-        $path = $file->store('uploads', 'public');
+        $filename = $file->getClientOriginalName(); 
+        $path = $file->store('public');
+        
+        $image = explode("/",$path)[1];
         $item = Item::create([
             'name' => $validatedData['name'],
             'tags' => $validatedData['tags'],
@@ -53,7 +53,7 @@ class ItemController extends Controller
             'description' => $validatedData['description'],
             'date_found' => $validatedData['date_found'],
             'user_id'=> Auth::user()->id,
-            'image'=> $path
+            'image'=> $image
         ]);
         Sweetalert::success('Creation Successful', 'Success');
         return redirect("/");
