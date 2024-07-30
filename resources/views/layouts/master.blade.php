@@ -14,9 +14,12 @@
             <div class="ml-[100px] w-[700px]">
                 @yield('topElement')
                 </div>
+                <?php
+                
+                ?>
             <div class="flex items-center space-x-5">
                 <img class="inline-block w-12 h-12 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt=""/>
-                <div>Hello Lolade!</div>
+                <div>Hello {{ Auth::user()->name }}!</div>
             </div>  
         </div>
     </div>

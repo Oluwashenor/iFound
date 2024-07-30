@@ -44,7 +44,7 @@ class UserController extends Controller
 
         $credentials = $request->only('matric', 'password');
         if (auth()->attempt($credentials)) {
-            return redirect('/');
+            return redirect('/new');
         }
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
