@@ -19,7 +19,7 @@ Route::get('/logout', [UserController::class, 'logout']);
 
 Route::get('/create', function () {
     return view('create');
-})->middleware('auth');;
+})->middleware('auth');
 
 Route::get('/report', function () {
     return view('report');
@@ -39,7 +39,7 @@ Route::get('/login', function () {
 
 Route::post('/loginAction', [UserController::class, 'login']);
 
-Route::post('/createFoundAction', [ItemController::class, 'create'])->middleware('auth');;
+Route::post('/createFoundAction', [ItemController::class, 'create'])->middleware('auth');
 
 Route::get('/register', function () {
     return view('auth.register');
