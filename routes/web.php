@@ -9,9 +9,11 @@ Route::get('/new', function () {
     return view('new');
 })->middleware('auth');
 
-Route::get('/search', function () {
-    return view('search');
-})->middleware('auth');
+// Route::get('/search', function () {
+//     return view('search');
+// })->middleware('auth');
+
+Route::get('/search/{search?}',[ItemController::class, 'search'])->middleware('auth');
 
 Route::get('/logout', [UserController::class, 'logout']);
 

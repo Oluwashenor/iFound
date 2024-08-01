@@ -18,6 +18,16 @@ class ItemController extends Controller
         //
     }
 
+    public function search(Request $request)
+    {
+        $search = $request->search;
+        if(!$search){
+            return View('search');
+        }
+        $foundItems = Item::where('found', 1)->where('name','LIKE',"%{$search}%" )->get();
+        return View('search', compact('foundItems'));
+    }
+
     public function dashboard(){
         $foundItems = Item::where('found', 1)->get();
         $filename = "/storage/uploads/uploads/Qd8h1SE9WQ2tmWrp51CP7J3iaUoj37NRCsWM6tlZ.jpg";
