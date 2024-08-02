@@ -30,6 +30,7 @@ Route::get('/inbox',[MessageController::class, 'index'])->middleware('auth');
 
 
 Route::get('/', [ItemController::class, 'dashboard'])->middleware('auth');
+Route::get('/my-items', [ItemController::class, 'index'])->middleware('auth')->name('my-items');
 Route::get('/contactfinder/{id}', [ItemController::class, 'contactfinder'])->middleware('auth');
 
 
@@ -44,5 +45,7 @@ Route::post('/createFoundAction', [ItemController::class, 'create'])->middleware
 Route::get('/register', function () {
     return view('auth.register');
 });
+
+Route::get('/delete/{id}',[ItemController::class, 'delete'])->middleware('auth');
 
 Route::post('/registerAction', [UserController::class, 'register']);

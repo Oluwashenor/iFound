@@ -18,8 +18,8 @@
 <input type="text" name="email" id="email" class="cus-input" placeholder="badbish@gmail.com">
 <input type="text" name="phone" id="phone" class="cus-input" placeholder="09000000000">
 <input type="text" name="matric" id="matric" class="cus-input" placeholder="Matric Number">
-<input type="text" name="password" id="password" class="cus-input" placeholder="***********">
-<input type="text" name="password_confirmation" id="re_password" class="cus-input" placeholder="**********">
+<input type="password" name="password" id="password" class="cus-input" placeholder="***********">
+<input type="password" name="password_confirmation" id="re_password" class="cus-input" placeholder="**********">
 <button class="rounded-xl bg-[#F58D25] w-full text-white py-4 px-3 mt-5">Sign Up</button>
 
 

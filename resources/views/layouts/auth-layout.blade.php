@@ -10,7 +10,7 @@
 
 <body>
     <div class="container flex flex-col justify-between px-10 mx-auto">
-        <div class="flex flex-col mx-auto w-[380px] justify-center items-center mt-20">
+        <div class="flex flex-col mx-auto w-[380px] justify-center items-center">
             <div class="">
                 <img class="object-contain w-[120px] h-[120px]" src={{asset('storage/logo.png')}} alt="upload image">
             </div>

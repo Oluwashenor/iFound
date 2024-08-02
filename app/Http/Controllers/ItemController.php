@@ -15,7 +15,13 @@ class ItemController extends Controller
      */
     public function index()
     {
-        //
+        $foundItems = Item::where('found', 1)->where('user_id',Auth::user()->id)->get();
+        return View('items', compact('foundItems'));
+    }
+
+    public function delete($id){
+        $delete = Item::find($id)->delete();
+        return redirect('/my-items');
     }
 
     public function search(Request $request)

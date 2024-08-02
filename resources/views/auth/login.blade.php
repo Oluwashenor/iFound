@@ -15,8 +15,8 @@
     <p class="mb-5 text-center">Welcome back!, enter your details</p>
    <input type="text" name="matric" id="matric" class="cus-input"
         placeholder="EU204202-000">
-    <input type="text" name="password" id="password" class="cus-input"
-        placeholder="*************">
+    <input type="password" name="password" id="password" class="cus-input"
+        placeholder="**********">
     <button class="rounded-xl bg-[#F58D25] w-full py-4 px-3 mt-5 text-white">Login</button>
     </form>
 
